@@ -1,0 +1,11 @@
+node_modules/
+.pnpm-store/
+
+reports/playwright-report/
+reports/test-results/
+
+.DS_Store
+**/.DS_Store
+
+playwright/.cache/
+test-results/
