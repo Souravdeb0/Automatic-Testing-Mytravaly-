@@ -91,7 +91,7 @@ export class AdminModulePage {
       }
     }
 
-    await this.page.goto(buildSearchResultsPath(location));
+    await this.page.goto(buildSearchResultsPath(location), { waitUntil: 'commit', timeout: 15_000 });
   }
 
   async selectTravelDates(): Promise<void> {

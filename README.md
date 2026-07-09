@@ -44,6 +44,12 @@ pnpm run test:integration
 pnpm run test:e2e
 ```
 
+Generate separate JSON reports for every test layer:
+
+```bash
+pnpm run test:reports
+```
+
 Run visibly:
 
 ```bash
@@ -53,7 +59,10 @@ pnpm run test:headed
 Reports are generated automatically after each run:
 
 - HTML report: `reports/playwright-report`
-- JSON report: `reports/test-results/results.json`
+- Full-suite JSON report: `reports/json/all-tests.json`
+- Unit JSON report: `reports/json/unit-tests.json`
+- Integration JSON report: `reports/json/integration-tests.json`
+- E2E JSON report: `reports/json/e2e-tests.json`
 
 ## Useful Environment Variables
 

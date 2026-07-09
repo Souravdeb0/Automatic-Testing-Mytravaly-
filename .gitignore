@@ -3,6 +3,7 @@ node_modules/
 
 reports/playwright-report/
 reports/test-results/
+reports/json/
 
 .DS_Store
 **/.DS_Store

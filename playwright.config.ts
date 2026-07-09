@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
 const baseURL = process.env.BASE_URL ?? 'https://mtindia-v2-admin.onrender.com';
+const jsonReportName = process.env.JSON_REPORT_NAME ?? 'all-tests';
 
 export default defineConfig({
   testDir: '.',
@@ -13,7 +14,7 @@ export default defineConfig({
   reporter: [
     ['list'],
     ['html', { outputFolder: 'reports/playwright-report', open: 'never' }],
-    ['json', { outputFile: 'reports/test-results/results.json' }],
+    ['json', { outputFile: `reports/json/${jsonReportName}.json` }],
   ],
   use: {
     baseURL,

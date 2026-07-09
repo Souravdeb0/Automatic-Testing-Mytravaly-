@@ -4,10 +4,11 @@
   "private": true,
   "description": "TypeScript Playwright automation suite for the MTIndia/MyTravaly admin deployment.",
   "scripts": {
-    "test": "playwright test",
-    "test:unit": "playwright test --project=unit",
-    "test:integration": "playwright test --project=integration",
-    "test:e2e": "playwright test --project=chromium",
+    "test": "JSON_REPORT_NAME=all-tests playwright test",
+    "test:unit": "JSON_REPORT_NAME=unit-tests playwright test --project=unit",
+    "test:integration": "JSON_REPORT_NAME=integration-tests playwright test --project=integration",
+    "test:e2e": "JSON_REPORT_NAME=e2e-tests playwright test --project=chromium",
+    "test:reports": "pnpm run test:unit && pnpm run test:integration && pnpm run test:e2e",
     "test:headed": "playwright test --headed",
     "report": "playwright show-report reports/playwright-report"
   },
