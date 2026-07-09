@@ -3,7 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 const baseURL = process.env.BASE_URL ?? 'https://mtindia-v2-admin.onrender.com';
 
 export default defineConfig({
-  testDir: './tests-ts',
+  testDir: '.',
   timeout: 60_000,
   expect: {
     timeout: 15_000,
@@ -27,7 +27,16 @@ export default defineConfig({
   },
   projects: [
     {
+      name: 'unit',
+      testMatch: /tests-unit\/.*\.spec\.ts/,
+    },
+    {
+      name: 'integration',
+      testMatch: /tests-integration\/.*\.spec\.ts/,
+    },
+    {
       name: 'chromium',
+      testMatch: /tests-ts\/.*\.spec\.ts/,
       use: { ...devices['Desktop Chrome'] },
     },
   ],

@@ -1,5 +1,6 @@
 import { expect, type Locator, type Page, type APIRequestContext } from '@playwright/test';
 import { BASE_URL, categoryNames, type CategoryName } from '../config';
+import { buildSearchResultsPath, isSearchButtonDisabledClass } from '../utils/search';
 
 export class AdminModulePage {
   readonly logo: Locator;
@@ -80,7 +81,7 @@ export class AdminModulePage {
     const startingUrl = this.page.url();
     const classes = (await this.searchButton.getAttribute('class')) ?? '';
 
-    if (!classes.includes('cursor-not-allowed') && await this.searchButton.isEnabled()) {
+    if (!isSearchButtonDisabledClass(classes) && await this.searchButton.isEnabled()) {
       await this.searchButton.click();
       try {
         await this.page.waitForURL((url) => url.toString() !== startingUrl, { timeout: 5_000 });
@@ -90,7 +91,7 @@ export class AdminModulePage {
       }
     }
 
-    await this.page.goto(`/search-results?location=${encodeURIComponent(location)}`);
+    await this.page.goto(buildSearchResultsPath(location));
   }
 
   async selectTravelDates(): Promise<void> {

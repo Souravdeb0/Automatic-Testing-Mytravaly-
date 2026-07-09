@@ -36,6 +36,14 @@ Headless mode is enabled by default.
 pnpm test
 ```
 
+Run only one test layer:
+
+```bash
+pnpm run test:unit
+pnpm run test:integration
+pnpm run test:e2e
+```
+
 Run visibly:
 
 ```bash
@@ -51,3 +59,9 @@ Reports are generated automatically after each run:
 
 - `BASE_URL`: target application URL. Defaults to `https://mtindia-v2-admin.onrender.com`
 - `HEADLESS`: set `0` to run Chrome visibly.
+
+## Test Layers
+
+- Unit tests: pure TypeScript checks for shared config and helper functions.
+- Integration tests: HTTP-level checks against the deployed application routes.
+- E2E tests: browser UI checks for the public landing page workflows.
